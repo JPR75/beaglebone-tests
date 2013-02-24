@@ -15,19 +15,15 @@ class Application (object) :
   def __init__ (self, environ, start_response) :
     self.environ = environ
     self.start = start_response
-    print("->1")
 
   def www_infoWindow (self):
-    print("->3")
     platform_info = ("Processor :  {} ; {}<br />OS            : {}<br />Vesrion    : {}<br />Python     : {}").format(platform.machine(), platform.processor(), platform.platform(), platform.version(), platform.python_version())
     response_body = info_html.format(platform_info)
     return response_body
 
 def application (environ, start_response) :
-  print("->0")
   app = Application (environ, start_response)
   response_body = app.www_infoWindow ()
-  print(response_body)
   status = '200 OK'
   response_headers = [('Content-Type', 'text/html'), ('Content-Length', str(len(response_body)))]
   start_response(status, response_headers)

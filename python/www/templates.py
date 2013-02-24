@@ -18,6 +18,7 @@ info_html = """
     <p>
       <a href="./index.wsgi">Home</a> | <a href="./info.wsgi">Info</a>
     </p>
+    <br />
     <p>
       {0}
     </p>
@@ -42,5 +43,18 @@ home_html = """
     <p>
       <a href="./index.wsgi">Home</a> | <a href="./info.wsgi">Info</a>
     </p>
+    <br />
+    <p>
+      Delta = {0}
+    </p>
+    <br />
+    <form method="get" action="get">
+      <p>
+        Enter delta : <input type="text" name="delta">
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+    </form>
    </body>
 </html>"""
