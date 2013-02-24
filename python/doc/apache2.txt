@@ -1,0 +1,61 @@
+/etc/apache2/
+
+/var/www/
+
+/usr/lib/cgi-bin/
+
+/var/log/apache2/error.log
+
+sudo cp led2 /usr/lib/cgi-bin/led2.cgi
+sudo chmod a+x /usr/lib/cgi-bin/led2.cgi
+sudo chown root /usr/lib/cgi-bin/led2.cgi
+sudo chmod a+s /usr/lib/cgi-bin/led2.cgi
+
+
+======================================================
+
+Configuration pour python :
+
+sudo apt-get install libapache2-mod-wsgi
+sudo vi /etc/apache2/sites-enabled/000-default
+    <Directory /var/www/>
+      Options Indexes FollowSymLinks MultiViews ExecCGI
+
+      AddHandler cgi-script .cgi
+      AddHandler wsgi-script .wsgi
+
+      AllowOverride None
+      Order allow,deny
+      allow from all
+    </Directory>
+
+sudo /etc/init.d/apache2 restart
+cd /var/www/
+sudo vi test.wsgi
+
+    def application(environ, start_response):
+        status = '200 OK'
+        output = 'Hello World 2 !'
+
+        response_headers = [('Content-type', 'text/plain'),
+                            ('Content-Length', str(len(output)))]
+        start_response(status, response_headers)
+
+        return [output]
+
+sudo /etc/init.d/apache2 restart
+sous firefox : http://192.168.1.44/test.wsgi
+
+
+======================================================
+
+Pour changer le répertoire par defaut de www :
+
+sudo vi /etc/apache2/sites-enabled/000-default
+#       DocumentRoot /var/www
+        DocumentRoot /home/ubuntu/dev/www/
+
+modifer les driot des fichier : chmod o+r toto.wsgi
+
+sudo vi /etc/apache2/mods-enabled/dir.conf
+    DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm index.wsgi

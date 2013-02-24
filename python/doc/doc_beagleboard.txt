@@ -1,0 +1,52 @@
+#######################################################################################################
+fdisk -l : visualise les disques
+
+[xz -dkc Angstrom-Cloud9-IDE-GNOME-eglibc-ipk-v2012.05-beaglebone-2012.05.09.img.xz > /dev/sdc1 : copy image Angstrom sur sdc1]
+Extraire l'image *.xz et utiliser Win32DiskImager.exe
+#######################################################################################################
+
+#######################################################################################################
+Se connecter par ssh root@192.168.1.45
+ou
+Se connecter par ssh root@192.168.1.44
+[ubuntu : ubuntu@192.168.1.44 pass: temppwd
+          pass sudo : temppwd]
+Si pb connection ssh : supprimer la ligne 192.168.1.44 du fichier home/JPR75/.ssh/known_hosts
+#######################################################################################################
+
+#######################################################################################################
+echo 1 > /sys/class/leds/beaglebone::usr3/brightness
+echo 0 > /sys/class/leds/beaglebone::usr3/brightness
+#######################################################################################################
+
+#######################################################################################################
+# Ubuntu 11.10 Oneric
+# Pour lancer un script python en root
+sudo visudo
+   #script python
+   ubuntu ALL = NOPASSWD: /home/ubuntu/dev/test.py
+
+sudo chmod a+x /home/ubuntu/dev/test.py
+sudo chown root /home/ubuntu/dev/test.py
+sudo chmod a+s /home/ubuntu/dev/test.py
+
+# Dans le script python :
+import os
+os.system("sudo shutdown -P now")
+
+# Pour lancer le script au start-up
+vi start_py.sh
+   #!/bin/bash
+   python /home/ubuntu/dev/test2.py &
+
+sudo visudo
+   ubuntu ALL = NOPASSWD: /home/ubuntu/dev/start_py.sh
+
+sudo chmod a+x /home/ubuntu/dev/start_py.sh
+sudo chown root /home/ubuntu/dev/start_py.sh
+sudo chmod a+s /home/ubuntu/dev/start_py.sh
+
+vi .profile
+   sudo ./start_py.sh
+#######################################################################################################
+

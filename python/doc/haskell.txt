@@ -1,0 +1,4 @@
+apt-get install haskell-platform
+
+cabal install cgi
+cabal install xhtml

@@ -1,0 +1,17 @@
+# Install LXDE
+# Ubuntu 11.10 Oneric
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get clean
+sudo apt-get install --no-install-recommends lubuntu-desktop
+sudo apt-get autoclean
+sudo rm /var/cache/apt/archives/*.deb
+sudo vi /etc/lxdm/default.conf ==> autologin=ubuntu
+                                   session=/usr/bin/openbox-lubuntu
+sudo vi /etc/profile           ==> export DISPLAY=:0
+
+##############
+#sudo apt-get install xserver-xorg-video-omap3
+#sudo apt-get install fluxbox
+
+
