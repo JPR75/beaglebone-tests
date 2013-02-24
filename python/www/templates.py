@@ -48,7 +48,7 @@ home_html = """
       Delta = {0}
     </p>
     <br />
-    <form method="get" action="get">
+    <form method="get" action="index.wsgi">
       <p>
         Enter delta : <input type="text" name="delta">
       </p>

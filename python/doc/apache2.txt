@@ -55,7 +55,7 @@ sudo vi /etc/apache2/sites-enabled/000-default
 #       DocumentRoot /var/www
         DocumentRoot /home/ubuntu/dev/www/
 
-modifer les driot des fichier : chmod o+r toto.wsgi
+modifer les droits des fichiers : chmod o+r toto.wsgi
 
 sudo vi /etc/apache2/mods-enabled/dir.conf
     DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm index.wsgi
