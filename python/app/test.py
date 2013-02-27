@@ -6,6 +6,7 @@ import os
 import platform
 import datetime
 
+from startup import startup
 #------------------------------------------------------------------------------
 # Info window class
 #------------------------------------------------------------------------------
@@ -151,6 +152,15 @@ class mainFrameWindows (Frame) :
     # Set the menu bar
     mainMenuBar (self.master, self.master.menu)
 
-if __name__ =="__main__":              # --- Programme de test ---
-  mainFrameWindows().mainloop()
-
+#------------------------------------------------------------------------------
+# Main
+#------------------------------------------------------------------------------
+if __name__ =="__main__" :
+  init = startup ()
+  try :
+    init.create_data_file()
+    init.create_cmd_file()
+  except IOError :
+    print("*** Error in startup sequence ; aborting\n")
+  else :
+    mainFrameWindows().mainloop()
