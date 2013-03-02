@@ -4,7 +4,11 @@
 from Tkinter import *
 import os
 import platform
+import threading
 import datetime
+import time
+
+from startup import startup
 
 #------------------------------------------------------------------------------
 # Info window class
@@ -40,7 +44,7 @@ class infoWindow (Canvas) :
   def show_sys_date (self):
     """Show date and time"""
     now = datetime.datetime.now()
-    current_date_time = ("{}-{}-{} ; {}h {}mm {}s").format(now.year, now.month, now.day, now.hour, now.minute, now.second)
+    current_date_time = ("Sys date : {}-{}-{} ; {}h {}mm {}s").format(now.year, now.month, now.day, now.hour, now.minute, now.second)
 #    Label(self.sysinfo, text = current_date_time, font = ("DejaVu_Sans_Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
     Label(self.sysinfo, text = current_date_time, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
@@ -56,16 +60,20 @@ class infoWindow (Canvas) :
 class homeWindow (Canvas) :
   """Home page window"""
   def __init__(self, mainCanevas) :
-    # System info
+    self.data = "Home Page"
     self.homePage = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.homePage.grid(row = 1, column = 0, padx = 5, pady = 0)
-    self.show_home_page ()
-
-  def show_home_page (self) :
-    """Home page info"""
-
 #    Label(self.homePage, text = "Home Page", font = ("DejaVu_Sans_Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
-    Label(self.homePage, text = "Home Page", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
+    self.showMessage = Label(self.homePage, text = self.data, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showMessage.pack(padx = 20, pady = 5, anchor = W)
+    self.update_home_page ()
+
+  def update_home_page (self) :
+    """Home page update"""
+    now = datetime.datetime.now()
+    self.data =  now.second
+    self.showMessage.configure(text = self.data)
+    self.homePage.after(500, self.update_home_page)
 
 #------------------------------------------------------------------------------
 # Menu bar class
@@ -106,6 +114,7 @@ class mainMenuBar (object) :
   def exit_app (self) :
     self.mainFrame.quit()
     self.mainFrame.destroy()
+#    self.mainFrame.quit()
 
   def shut_down (self) :
     self.mainFrame.quit()
@@ -138,9 +147,14 @@ class mainCanvasWindows (Frame) :
 # Main frame class
 #------------------------------------------------------------------------------
 class mainFrameWindows (Frame) :
+#class mainFrameWindows (Frame, threading.Thread) :
   """Main Frame window"""
   def __init__(self) :
+#    threading.Thread.__init__(self)
     Frame.__init__(self)
+#    self.start()
+
+#  def run(self):
     self.master.geometry("800x480+0+0")
     self.master.config(bg = "cadet blue")
     self.master.overrideredirect(1)
@@ -150,7 +164,19 @@ class mainFrameWindows (Frame) :
 
     # Set the menu bar
     mainMenuBar (self.master, self.master.menu)
+#    self.master.mainloop()
 
-if __name__ =="__main__":              # --- Programme de test ---
-  mainFrameWindows().mainloop()
+#------------------------------------------------------------------------------
+# Main
+#------------------------------------------------------------------------------
+if __name__ =="__main__" :
+  init = startup ()
+  try :
+    init.create_data_file()
+    init.create_cmd_file()
+  except IOError :
+    print("*** Error in startup sequence ; aborting\n")
+  else :
+#    mainFrameWindows()
+    mainFrameWindows().mainloop()
 
