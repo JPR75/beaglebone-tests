@@ -6,6 +6,18 @@ Extraire l'image *.xz et utiliser Win32DiskImager.exe
 #######################################################################################################
 
 #######################################################################################################
+Si perte d'espace sur SD Card :
+
+diskmgmt.msc pour voir les partition
+Click Windows start menu, type “Diskpart” and click the result to open the DiskPart command prompt window.
+list disk
+select disk 1
+Clean
+create partition primary
+
+#######################################################################################################
+
+#######################################################################################################
 Se connecter par ssh root@192.168.1.45
 ou
 Se connecter par ssh root@192.168.1.44
@@ -50,3 +62,32 @@ vi .profile
    sudo ./start_py.sh
 #######################################################################################################
 
+#######################################################################################################
+# Ubuntu 11.10 Oneric
+# Backup et restore
+cd /
+sudo tar -cvpzf backup.tar.gz --exclude=/backup.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/sys --exclude=/mnt --exclude=/media --exclude=/dev /
+scp ubuntu@192.168.1.44:backup.tar.gz backup.tar.gz
+
+##
+scp backup.tar.gz ubuntu@192.168.1.44:backup.tar.gz
+sudo tar -xvpzf backup.tar.gz -C /
+#######################################################################################################
+
+#######################################################################################################
+# Ubuntu 11.10 Oneric
+# Package a enlever
+sudo apt-get install localepurge
+[sudo dpkg-reconfigure localepurge] pour reconfigurer // utiliser espace pour selectioner
+sudo localepurge
+sudo apt-get autoremove --purge localepurge
+sudo apt-get autoremove --purge ppp
+sudo apt-get autoremove --purge git
+
+[sudo apt-get autoremove --purge python2.6 python2.6-minimal python2.7 python2.7-minimal python-tk libapache2-mod-wsgi
+sudo apt-get install python3 python3-tk libapache2-mod-wsgi-py3
+==> pour python3]
+
+sudo apt-get clean
+sudo apt-get autoclean
+#######################################################################################################
