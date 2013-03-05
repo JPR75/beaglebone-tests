@@ -6,6 +6,17 @@ Extraire l'image *.xz et utiliser Win32DiskImager.exe
 #######################################################################################################
 
 #######################################################################################################
+# Pour installer ubuntu (a faire sous linux)
+tar xJf ubuntu-11.10-r14-minimal-armel-2012-09-27.tar.xz
+cd ubuntu-11.10-r14-minimal-armel-2012-09-27/
+
+sudo ./setup_sdcard.sh --probe-mmc
+    => recupere le n° SD card
+
+sudo ./setup_sdcard.sh --mmc /dev/sdf --uboot bone
+#######################################################################################################
+
+#######################################################################################################
 Si perte d'espace sur SD Card :
 
 diskmgmt.msc pour voir les partition
@@ -82,6 +93,7 @@ sudo apt-get install localepurge
 sudo localepurge
 sudo apt-get autoremove --purge localepurge
 sudo apt-get autoremove --purge ppp
+sudo apt-get autoremove --purge pppconfig
 sudo apt-get autoremove --purge git
 
 [sudo apt-get autoremove --purge python2.6 python2.6-minimal python2.7 python2.7-minimal python-tk libapache2-mod-wsgi

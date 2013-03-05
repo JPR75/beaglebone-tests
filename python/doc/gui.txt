@@ -3,7 +3,8 @@
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get clean
-sudo apt-get install --no-install-recommends lubuntu-desktop
+sudo apt-get install --no-install-recommends lubuntu-core
+[sudo apt-get install --no-install-recommends lubuntu-desktop]
 sudo apt-get autoclean
 sudo rm /var/cache/apt/archives/*.deb
 sudo vi /etc/lxdm/default.conf ==> autologin=ubuntu
