@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:Utf8 -*-
 
-from Tkinter import *
+from tkinter import *
 import os
 import platform
 import threading
