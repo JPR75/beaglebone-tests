@@ -1,0 +1,44 @@
+##################################################################################################################
+v1.0.0 :
+  # Ubuntu 11.10 Oneric
+  # Packages enlevés
+  sudo apt-get install localepurge
+  [sudo dpkg-reconfigure localepurge] pour reconfigurer // utiliser espace pour selectioner
+  sudo localepurge
+  sudo apt-get autoremove --purge localepurge
+  sudo apt-get autoremove --purge ppp
+  sudo apt-get autoremove --purge pppconfig
+  sudo apt-get autoremove --purge git
+##################################################################################################################
+
+##################################################################################################################
+v1.1.0 :
+  # Ubuntu 11.10 Oneric
+  # Packages enlevés
+  sudo apt-get autoremove --purge python2.6 python2.6-minimal python2.7 python2.7-minimal python-tk libapache2-mod-wsgi
+  sudo apt-get install python3 python3-tk libapache2-mod-wsgi-py3
+##################################################################################################################
+
+##################################################################################################################
+v1.2.0 :
+  # Ubuntu 11.10 Oneric
+  sudo apt-get install --no-install-recommends lubuntu-desktop --no-install-recommends
+##################################################################################################################
+
+##################################################################################################################
+v1.3.0 :
+  # Ubuntu 11.10 Oneric
+  # Free mem = 160 kB
+  Config fonctionel avec python 3.2 + apache
+##################################################################################################################
+
+##################################################################################################################
+v1.4.0 :
+  # Ubuntu 11.10 Oneric
+  # Free mem = 162 kB
+  sudo apt-get autoremove --purge gnome*
+  sudo sudo apt-get autoremove --purge alsa*
+  sudo vi /etc/lxdm/default.conf ==> autologin=ubuntu
+                                     session=/usr/bin/openbox
+##################################################################################################################
+
