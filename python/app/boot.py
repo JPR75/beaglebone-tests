@@ -37,7 +37,7 @@ class infoWindow (Canvas) :
     """Show RAM info"""
     RAMmemory = os.popen("free -m").readlines()[1].split()
 #    RAMmemory = ["xxx","xxx","xxx","xxx"]
-    memory = ("Memory => total : {}  kB ; used : {} kB ; free : {} kB").format(RAMmemory[1], RAMmemory[2], RAMmemory[3])
+    memory = ("Memory => total : {}  MB ; used : {} MB ; free : {} MB").format(RAMmemory[1], RAMmemory[2], RAMmemory[3])
 #    Label(self.sysinfo, text = memory, font = ("DejaVu_Sans_Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
     Label(self.sysinfo, text = memory, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 

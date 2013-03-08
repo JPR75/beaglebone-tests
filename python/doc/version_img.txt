@@ -33,7 +33,7 @@ v1.3.0 :
 ##################################################################################################################
 
 ##################################################################################################################
-v1.4.0 :
+v1.4.1 :
   # Ubuntu 11.10 Oneric
   # Free mem = 162 kB
   sudo apt-get autoremove --purge gnome*
@@ -41,4 +41,23 @@ v1.4.0 :
   sudo vi /etc/lxdm/default.conf ==> autologin=ubuntu
                                      session=/usr/bin/openbox
 ##################################################################################################################
+v1.5.0 :
+  # Ubuntu 11.10 Oneric
+  # Free mem = 167 kB
+  sudo apt-get install localepurge
+  sudo localepurge
+  sudo apt-get autoremove --purge localepurge
+  sudo apt-get autoremove --purge libasound2 wireless-tools
+  sudo apt-get purge xserver-xorg-video-ati xserver-xorg-video-radeon xserver-xorg-video-cirrus xserver-xorg-video-vesa
+  sudo apt-get purge cpp
+  sudo apt-get purge cpp-4.6
+      [ne pas faire apt-get autoremove]
+  sudo apt-get clean
+  sudo apt-get autoclean
 
+  sudo rm -r /usr/games/
+  sudo rm -r /usr/share/gnome/
+  sudo rm -r /usr/share/glade3/
+  sudo rm -r /etc/gnome/
+  sudo rm -r /etc/pcmcia/
+#######################################################################################################
