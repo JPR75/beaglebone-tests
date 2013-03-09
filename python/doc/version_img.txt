@@ -61,3 +61,15 @@ v1.5.0 :
   sudo rm -r /etc/gnome/
   sudo rm -r /etc/pcmcia/
 #######################################################################################################
+v1.6.0 :
+  # Ubuntu 11.10 Oneric
+  # Free mem = 167 kB
+  sudo apt-get purge lubuntu-*
+  sudo apt-get purge xorg-docs-core
+  sudo apt-get purge xserver-xorg-video-mach64 xserver-xorg-video-r128
+
+  sudo apt-get clean
+  sudo apt-get autoclean
+#######################################################################################################
+
+
