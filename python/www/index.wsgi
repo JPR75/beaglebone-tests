@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from wsgiref.simple_server import make_server
+#from wsgiref.simple_server import make_server
 from cgi import parse_qs, escape
 import sys
 import re
@@ -23,6 +23,17 @@ class Application (object) :
         delta = "Error"
     response_body = home_html.format(delta or "Empty")
     return response_body
+
+  def write_cmd_file (self) :
+    """Write the file containing the commands"""
+    try :
+      cmdFile = open("cmd_log.txt", "w")
+    except IOError as e :
+      print("*** Error while creating cmd log file : {}\n".format(e))
+      raise
+    else :
+      cmdFile.write("000.0000\n000.0000")
+      cmdFile.close()
 
 def application (environ, start_response) :
   app = Application (environ, start_response)
