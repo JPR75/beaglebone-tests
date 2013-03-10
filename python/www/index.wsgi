@@ -5,8 +5,8 @@ from cgi import parse_qs, escape
 import sys
 import re
 
-sys.path.insert(0, '/home/ubuntu/soft/www/template.py')
-sys.path.insert(1, '/home/ubuntu/soft/www/')
+sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
+sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
 from templates import info_html, home_html
 
 class Application (object) :

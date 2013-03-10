@@ -103,3 +103,19 @@ sudo apt-get install python3 python3-tk libapache2-mod-wsgi-py3
 sudo apt-get clean
 sudo apt-get autoclean
 #######################################################################################################
+#
+########################################################################################################
+# Ubuntu 11.10 Oneric
+# Ramdisk
+mkdir ramdisk
+chmod 777 ramdisk
+sudo vi /etc/fstab
+    ==> tmpfs /home/ubuntu/ramdisk  tmpfs rw,size=16M,mode=777 0    0
+sudo vi start_py.sh
+#!/bin/bash
+    cp -r /home/ubuntu/soft /home/ubuntu/ramdisk/soft
+    cd /home/ubuntu/ramdisk
+    python3 /home/ubuntu/ramdisk/soft/boot.py &
+########################################################################################################
+
+

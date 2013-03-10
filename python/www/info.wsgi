@@ -7,8 +7,8 @@ import sys
 import platform
 import datetime
 
-sys.path.insert(0, '/home/ubuntu/dev/www/template.py')
-sys.path.insert(1, '/home/ubuntu/dev/www/')
+sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
+sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
 from templates import info_html, home_html
 
 class Application (object) :
