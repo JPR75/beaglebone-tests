@@ -170,11 +170,9 @@ class mainFrameWindows (Frame) :
 # Main
 #------------------------------------------------------------------------------
 if __name__ =="__main__" :
-  init = startup ()
   try :
-    init.create_data_file()
-    init.create_cmd_file()
-  except IOError :
+    init = startup ("www/data_sql3.db")
+  except :
     print("*** Error in startup sequence ; aborting\n")
   else :
 #    mainFrameWindows()

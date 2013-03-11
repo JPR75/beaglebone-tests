@@ -1,34 +1,24 @@
 #! /usr/bin/env python
+# -*- coding:Utf8 -*-
 
 import os
+
+from sql_setup import setupSQL
 
 #------------------------------------------------------------------------------
 # Stratup sequence
 #------------------------------------------------------------------------------
-class startup (object) :
+class startup () :
   """Initialize the startup envirement"""
-  def __init__(self) :
-    pass
+  def __init__(self, dataBase) :
+    self.db = dataBase
+    self.check_db ()
 
-  def create_data_file (self) :
-    """Create the file containing the data"""
-    try :
-      dataFile = open("www/data_log.txt", "w")
-    except IOError as e :
-      print("*** Error while creating data log file in 'startup.py' : {}\n".format(e))
-      raise
-    else :
-      dataFile.write("000.0000\n0000.0000\n21.0")
-      dataFile.close()
-
-  def create_cmd_file (self) :
-    """Create the file containing the commands"""
-    try :
-      cmdFile = open("www/cmd_log.txt", "w")
-    except IOError as e :
-      print("*** Error while creating cmd log file in 'startup.py' : {}\n".format(e))
-      raise
-    else :
-      cmdFile.write("000.0000\n000.0000")
-      cmdFile.close()
-
+  def check_db (self) :
+    """Create data base if does not exist"""
+    if not os.path.isfile(self.db) :
+      try :
+        setup_db = setupSQL ()
+        setup_db.create_sql_bases (self.db)
+      except :
+        raise
