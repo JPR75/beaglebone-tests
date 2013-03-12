@@ -3,7 +3,7 @@
 
 import os
 
-from sql_setup import setupSQL
+from sql_setup import dataBaseSQL
 
 #------------------------------------------------------------------------------
 # Stratup sequence
@@ -18,7 +18,7 @@ class startup () :
     """Create data base if does not exist"""
     if not os.path.isfile(self.db) :
       try :
-        setup_db = setupSQL ()
-        setup_db.create_sql_bases (self.db)
+        setup_db = dataBaseSQL (self.db)
+        setup_db.create_sql_bases ()
       except :
         raise

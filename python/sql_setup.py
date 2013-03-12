@@ -6,15 +6,15 @@ import sqlite3
 #------------------------------------------------------------------------------
 # SQL3 database operations
 #------------------------------------------------------------------------------
-class setupSQL () :
+class dataBaseSQL () :
   """Setup a sqlite3 base"""
-  def __init__(self) :
-    pass
+  def __init__(self, dbName) :
+    self.dbName = dbName
 
-  def create_sql_bases (self, dbName) :
+  def create_sql_bases (self) :
     """Create a sqlite3 base"""
     try :
-      conn = sqlite3.connect(dbName, timeout = 2)
+      conn = sqlite3.connect(self.dbName, timeout = 2)
     except sqlite3.OperationalError as e :
       print("*** Error while creating database in 'sql_setup.py' : {}\n".format(e))
       raise
@@ -33,10 +33,10 @@ class setupSQL () :
       cur.close()
       conn.close()
 
-  def get_cmd_sql (self, dbName) :
+  def get_cmd_sql (self) :
     """Get cmd from data base"""
     try :
-      conn = sqlite3.connect(dbName, timeout = 2)
+      conn = sqlite3.connect(self.dbName, timeout = 2)
     except sqlite3.OperationalError as e :
       print("*** Error while connecting database to read cmd in 'sql_setup.py' : {}\n".format(e))
       raise
@@ -48,10 +48,10 @@ class setupSQL () :
       conn.close()
       return result
 
-  def get_data_sql (self, dbName) :
+  def get_data_sql (self) :
     """Get data from data base"""
     try :
-      conn = sqlite3.connect(dbName, timeout = 2)
+      conn = sqlite3.connect(self.dbName, timeout = 2)
     except sqlite3.OperationalError as e :
       print("*** Error while connecting database to read data in 'sql_setup.py' : {}\n".format(e))
       raise
@@ -63,10 +63,10 @@ class setupSQL () :
       conn.close()
       return result
 
-  def set_cmd_sql (self, dbName, data) :
+  def set_cmd_sql (self, data) :
     """Change cmd in data base"""
     try :
-      conn = sqlite3.connect(dbName, timeout = 2)
+      conn = sqlite3.connect(self.dbName, timeout = 2)
     except sqlite3.OperationalError as e :
       print("*** Error while connecting database to write cmd in 'sql_setup.py' : {}\n".format(e))
       raise
@@ -77,10 +77,10 @@ class setupSQL () :
       cur.close()
       conn.close()
 
-  def set_data_sql (self, dbName, data) :
+  def set_data_sql (self, data) :
     """Change data in data base"""
     try :
-      conn = sqlite3.connect(dbName, timeout = 2)
+      conn = sqlite3.connect(self.dbName, timeout = 2)
     except sqlite3.OperationalError as e :
       print("*** Error while connecting database to write data in 'sql_setup.py' : {}\n".format(e))
       raise
