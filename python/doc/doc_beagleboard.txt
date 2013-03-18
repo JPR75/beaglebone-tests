@@ -38,8 +38,10 @@ Si pb connection ssh : supprimer la ligne 192.168.1.44 du fichier home/JPR75/.ss
 #######################################################################################################
 
 #######################################################################################################
+# Angstrom
 echo 1 > /sys/class/leds/beaglebone::usr3/brightness
 echo 0 > /sys/class/leds/beaglebone::usr3/brightness
+[si pb droit : sudo chmod a+rw /sys/class/leds/beaglebone::usr3/brightness]
 #######################################################################################################
 
 #######################################################################################################
@@ -60,7 +62,7 @@ os.system("sudo shutdown -P now")
 # Pour lancer le script au start-up
 vi start_py.sh
    #!/bin/bash
-   python /home/ubuntu/dev/test2.py &
+   sudo python3 /home/ubuntu/dev/test2.py &
 
 sudo visudo
    ubuntu ALL = NOPASSWD: /home/ubuntu/dev/start_py.sh
@@ -103,7 +105,7 @@ sudo apt-get install python3 python3-tk libapache2-mod-wsgi-py3
 sudo apt-get clean
 sudo apt-get autoclean
 #######################################################################################################
-#
+
 ########################################################################################################
 # Ubuntu 11.10 Oneric
 # Ramdisk
@@ -115,7 +117,20 @@ sudo vi start_py.sh
 #!/bin/bash
     cp -r /home/ubuntu/soft /home/ubuntu/ramdisk/soft
     cd /home/ubuntu/ramdisk
+    sudo chmod a+rw /sys/class/leds/beaglebone::usr3/brightness # LED on / off
     sudo python3 /home/ubuntu/ramdisk/soft/boot.py &
 ########################################################################################################
 
+########################################################################################################
+# Ubuntu 11.10 Oneric
+# Pour régler l'heure
+dpkg-reconfigure tzdata
+########################################################################################################
+
+########################################################################################################
+# Ubuntu 11.10 Oneric
+# Acces LED
+echo 1 | sudo tee /sys/class/leds/beaglebone\:\:usr3/brightness
+echo 0 | sudo tee /sys/class/leds/beaglebone\:\:usr3/brightness
+########################################################################################################
 

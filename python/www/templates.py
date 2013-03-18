@@ -45,9 +45,15 @@ home_html = """
     </p>
     <br />
     <p>
-      Delta = {0}
+      Phi = {}<br />
+      Amp = {}<br />
+      Temp = {}<br />
     </p>
+    <hr />
     <br />
+    <p>
+      Delta = {}
+    </p>
     <form method="get" action="index.wsgi">
       <p>
         Enter delta : <input type="text" name="delta">

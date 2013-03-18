@@ -7,21 +7,32 @@ import re
 
 sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
 sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
+sys.path.append('/home/ubuntu/ramdisk/soft/')
+
 from templates import info_html, home_html
+from sql_setup2 import dataBaseSQL
+import global_data2
 
 class Application (object) :
   def __init__ (self, environ, start_response) :
     self.environ = environ
     self.start = start_response
+    self.dataBase = dataBaseSQL (global_data.db_path)
 
   def www_homeWindow (self) :
+    try :
+      result = self.dataBase.get_data_sql ()
+    except :
+      result = [("0.0000", "0.0000", "0.00")]
+      print("*** Error while connecting database to write cmd in 'index.wsgi'\n")
+      raise
     if self.environ['REQUEST_METHOD'] == "GET" :
       user_input = parse_qs(self.environ['QUERY_STRING'])
       delta = user_input.get('delta', [''])[0]
       delta = escape(delta)
       if not re.match(r'^[0-9]\d*(\.\d+)?$', delta) :
         delta = "Error"
-    response_body = home_html.format(delta or "Empty")
+    response_body = home_html.format(result[0][0], result[0][1], result[0][2], delta or "Empty")
     return response_body
 
   def write_cmd_file (self) :

@@ -6,6 +6,7 @@ import os
 import sys
 import platform
 import datetime
+import subprocess as sub
 
 sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
 sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
@@ -17,7 +18,14 @@ class Application (object) :
     self.start = start_response
 
   def www_infoWindow (self):
-    platform_info = ("Processor :  {} ; {}<br />OS            : {}<br />Vesrion    : {}<br />Python     : {}").format(platform.machine(), platform.processor(), platform.platform(), platform.version(), platform.python_version())
+#    os.system("echo 1 > /sys/class/leds/beaglebone::usr3/brightness")
+    value = open("/sys/class/leds/beaglebone::usr3/brightness",'w')
+    value.write(str(1))
+    value.close()
+
+    p = sub.Popen('whoami',stdout=sub.PIPE,stderr=sub.PIPE)
+    output, errors = p.communicate()
+    platform_info = ("Processor :  {} ; {}<br />OS            : {}<br />Vesrion    : {}<br />Python     : {}<br />I am : {}").format(platform.machine(), platform.processor(), platform.platform(), platform.version(), platform.python_version(), output)
     response_body = info_html.format(platform_info)
     return response_body
 
