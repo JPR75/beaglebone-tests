@@ -117,6 +117,8 @@ sudo vi start_py.sh
 #!/bin/bash
     cp -r /home/ubuntu/soft /home/ubuntu/ramdisk/soft
     cd /home/ubuntu/ramdisk
+    sudo chmod a+r /home/ubuntu/ramdisk/soft/global_data.py
+    sudo chmod a+r /home/ubuntu/ramdisk/soft/sql_setup.py
     sudo chmod a+rw /sys/class/leds/beaglebone::usr3/brightness # LED on / off
     sudo python3 /home/ubuntu/ramdisk/soft/boot.py &
 ########################################################################################################
