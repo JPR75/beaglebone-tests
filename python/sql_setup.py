@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
 import sqlite3
 
 #------------------------------------------------------------------------------
@@ -32,6 +33,12 @@ class dataBaseSQL () :
       conn.commit()
       cur.close()
       conn.close()
+
+      try :
+        os.system("chmod a+rw {}".format(self.dbName))
+      except sqlite3.OperationalError as e :
+        print("*** Error chmod in 'sql_setup.py' : {}\n".format(e))
+        raise
 
   def get_cmd_sql (self) :
     """Get cmd from data base"""

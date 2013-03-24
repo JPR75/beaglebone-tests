@@ -58,26 +58,32 @@ class infoWindow (Canvas) :
 class homeWindow (Canvas) :
   """Home page window"""
   def __init__(self, mainCanevas, dataBase) :
-    self.data = "hour : 00.00 \nminute : 00.00 \nsecond : 0.00"
     self.dataBase = dataBase
     self.homePage = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.homePage.grid(row = 1, column = 0, padx = 5, pady = 0)
-    self.showMessage = Label(self.homePage, text = self.data, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
-    self.showMessage.pack(padx = 20, pady = 5, anchor = W)
+    self.showData = Label(self.homePage, text = "hour : 00.00\nminute : 00.00\nsecond : 0.00", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showData.pack(padx = 20, pady = 5, anchor = W)
+    self.showCmd = Label(self.homePage, text = "delta : 000.0000\nT°C : 00.00", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showCmd.pack(padx = 20, pady = 5, anchor = W)
     self.update_home_page ()
 
   def update_home_page (self) :
     """Home page update"""
     now = datetime.datetime.now()
-    self.data =  "hour : {}\nminute : {}\nsecond : {}".format(now.hour, now.minute, now.second)
-    self.showMessage.configure(text = self.data)
+    data =  "hour : {}\nminute : {}\nsecond : {}".format(now.hour, now.minute, now.second)
+    self.showData.configure(text = data)
     # Get data
-    # ---
+    try :
+      cmd = self.dataBase.get_cmd_sql ()
+    except :
+      cmd = [("---.----", "--.--")]
+      print("*** Error while connecting database to read cmd in 'boot.py'\n")
+    self.showCmd.configure(text = "delta : {}\nT°C : {}".format(cmd[0][0], cmd[0][1]))
     # Push to data base
     try :
       self.dataBase.set_data_sql ((float(now.hour), float(now.minute), float(now.second)))
     except :
-      print("*** Error while connecting database to write cmd in 'boot.py'\n")
+      print("*** Error while connecting database to write data in 'boot.py'\n")
     self.homePage.after(500, self.update_home_page)
 
 #------------------------------------------------------------------------------

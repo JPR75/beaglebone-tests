@@ -10,8 +10,8 @@ sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
 sys.path.append('/home/ubuntu/ramdisk/soft/')
 
 from templates import info_html, home_html
-from sql_setup2 import dataBaseSQL
-import global_data2
+from sql_setup import dataBaseSQL
+import global_data
 
 class Application (object) :
   def __init__ (self, environ, start_response) :
@@ -23,7 +23,7 @@ class Application (object) :
     try :
       result = self.dataBase.get_data_sql ()
     except :
-      result = [("0.0000", "0.0000", "0.00")]
+      result = [("---.----", "---.----", "--.--")]
       print("*** Error while connecting database to write cmd in 'index.wsgi'\n")
       raise
     if self.environ['REQUEST_METHOD'] == "GET" :
@@ -32,6 +32,8 @@ class Application (object) :
       delta = escape(delta)
       if not re.match(r'^[0-9]\d*(\.\d+)?$', delta) :
         delta = "Error"
+      else :
+        self.dataBase.set_cmd_sql ((float(delta), 32.00))
     response_body = home_html.format(result[0][0], result[0][1], result[0][2], delta or "Empty")
     return response_body
 
@@ -62,3 +64,4 @@ def application (environ, start_response) :
 #    srv.serve_forever()
 #  except KeyboardInterrupt :
 #    pass
+
