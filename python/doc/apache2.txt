@@ -65,5 +65,12 @@ sudo vi /etc/apache2/mods-enabled/dir.conf
 # Ne semble pas fonctionnel
 cd /usr/lib/apache2/modules
 sudo ln -fs mod_wsgi.so-2.7 mod_wsgi.so
+#######################################################################################################
 
 #######################################################################################################
+# Acces fichiers avant copie en ram disk
+chmod a+r cmd.wsgi
+chmod a+r info.wsgi
+...
+#######################################################################################################
+

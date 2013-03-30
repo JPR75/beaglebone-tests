@@ -10,7 +10,7 @@ import subprocess as sub
 
 sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
 sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
-from templates import info_html, home_html
+from templates import info_html
 
 class Application (object) :
   def __init__ (self, environ, start_response) :
