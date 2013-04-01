@@ -7,6 +7,8 @@
 
 sudo cat /var/log/apache2/error.log
 
+sudo cat /etc/apache2/apache2.conf
+
 sudo cp led2 /usr/lib/cgi-bin/led2.cgi
 sudo chmod a+x /usr/lib/cgi-bin/led2.cgi
 sudo chown root /usr/lib/cgi-bin/led2.cgi
@@ -74,10 +76,23 @@ chmod a+r info.wsgi
 ...
 #######################################################################################################
 
-...
 #######################################################################################################
 # wsgi
 sudo vi /etc/apache2/mods-available/wsgi.conf
         WSGIPythonOptimize 2
         WSGILazyInitialization On
+#######################################################################################################
+
+#######################################################################################################
+# cgi
+sudo vi /etc/apache2/sites-enabled/000-default
+        ScriptAlias /cgi-bin/ /home/ubuntu/ramdisk/soft/www/
+        <Directory "/home/ubuntu/ramdisk/soft/www">
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+                AddHandler cgi-script .cgi
+                Order allow,deny
+                Allow from all
+        </Directory>
+#######################################################################################################
 
