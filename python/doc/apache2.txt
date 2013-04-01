@@ -5,7 +5,7 @@
 
 /usr/lib/cgi-bin/
 
-/var/log/apache2/error.log
+sudo cat /var/log/apache2/error.log
 
 sudo cp led2 /usr/lib/cgi-bin/led2.cgi
 sudo chmod a+x /usr/lib/cgi-bin/led2.cgi
@@ -73,4 +73,11 @@ chmod a+r cmd.wsgi
 chmod a+r info.wsgi
 ...
 #######################################################################################################
+
+...
+#######################################################################################################
+# wsgi
+sudo vi /etc/apache2/mods-available/wsgi.conf
+        WSGIPythonOptimize 2
+        WSGILazyInitialization On
 
