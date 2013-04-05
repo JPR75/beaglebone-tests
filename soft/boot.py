@@ -36,9 +36,10 @@ class infoWindow (Canvas) :
 
   def show_sys_RAM (self):
     """Show RAM info"""
-    RAMmemory = os.popen("free -m").readlines()[1].split()
+    RAMtotal = os.popen("free -m").readlines()[1].split()
+    RAMmemory = os.popen("free -m").readlines()[2].split()
 #    RAMmemory = ["xxx","xxx","xxx","xxx"]
-    memory = ("Memory => total : {}  MB ; used : {} MB ; free : {} MB").format(RAMmemory[1], RAMmemory[2], RAMmemory[3])
+    memory = ("Memory => total : {}  MB ; used : {} MB ; free : {} MB").format(RAMtotal[1], RAMmemory[2], RAMmemory[3])
     Label(self.sysinfo, text = memory, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_sys_date (self):

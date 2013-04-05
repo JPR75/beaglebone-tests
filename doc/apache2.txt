@@ -16,6 +16,41 @@ sudo chmod a+s /usr/lib/cgi-bin/led2.cgi
 #######################################################################################################
 
 #######################################################################################################
+# Configuration Apache2
+sudo cat /etc/apache2/apache2.conf
+
+  MaxKeepAliveRequests 5
+  KeepAliveTimeout 1
+
+  <IfModule mpm_prefork_module>
+      StartServers          5
+      MinSpareServers       5
+      MaxSpareServers      10
+      MaxClients           10
+      MaxRequestsPerChild  10
+  </IfModule>
+  <IfModule mpm_worker_module>
+      StartServers          2
+      MinSpareThreads       5
+      MaxSpareThreads       5
+      ThreadLimit           6
+      ThreadsPerChild      10
+      MaxClients           10
+      MaxRequestsPerChild  10
+  </IfModule>
+  <IfModule mpm_event_module>
+      StartServers          2
+      MinSpareThreads       5
+      MaxSpareThreads       5
+      ThreadLimit           6
+      ThreadsPerChild      10
+      MaxClients           10
+      MaxRequestsPerChild  10
+  </IfModule>
+sudo /etc/init.d/apache2 restart
+#######################################################################################################
+
+#######################################################################################################
 Configuration pour python :
 
 sudo apt-get install libapache2-mod-wsgi
