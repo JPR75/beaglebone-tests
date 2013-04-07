@@ -20,7 +20,11 @@ info_html = """
     </p>
     <br />
     <p>
-      {0}
+      Processor :  {} ; {}<br />
+      OS            : {}<br />
+      Vesrion    : {}<br />
+      Python     : {}<br />
+      I am : {}
     </p>
    </body>
 </html>"""
