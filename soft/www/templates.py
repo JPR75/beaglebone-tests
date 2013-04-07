@@ -21,7 +21,7 @@ cmd_html = """
     </p>
     <form method="get" action="cmd.wsgi">
       <p>
-        Enter &Delta;&Phi; : <input type="text" name="delta">
+        Enter &Delta;&Phi; : <input type="text" name="delta" value="{}">
       </p>
       <p>
         <input type="submit" value="Submit">
@@ -133,10 +133,10 @@ status_html = """
       {}
     </p>
     <p class="slight">
-      Status :<br /> {}
+      {}
     </p>
     <p>
-      Error :<br /> {}
+      {}
     </p>
    </body>
 </html>"""

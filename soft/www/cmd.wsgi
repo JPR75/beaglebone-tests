@@ -13,6 +13,8 @@ import global_data
 
 def application (environ, start_response) :
   dataBase = dataBaseSQL (global_data.db_path)
+  value = ""
+  delta = ""
   if environ['REQUEST_METHOD'] == "GET" :
     user_input = parse_qs(environ['QUERY_STRING'])
     delta = user_input.get('delta', [''])[0]
@@ -20,12 +22,13 @@ def application (environ, start_response) :
     if not re.match(r'^[0-9]\d*(\.\d+)?$', delta) :
       delta = "Error"
     else :
+      value = delta
       try :
         dataBase.set_cmd_sql ((float(delta), 32.00))
       except :
-        delta = "Error"
+        delta = "Data base access error"
         print("*** Error while connecting database to write data in 'cmd.wsgi'\n")
-  response_body = cmd_html.format(delta or "Empty")
+  response_body = cmd_html.format(delta, value)
 
   status = '200 OK'
   response_headers = [('Content-Type', 'text/html'), ('Content-Length', str(len(response_body)))]
