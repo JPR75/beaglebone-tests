@@ -73,11 +73,11 @@ index_html = """
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
   </head>
 
-  <frameset rows="8%, 60%, 32%", class="home blog">
+  <frameset rows="10%, 60%, 30%", class="home blog">
     <frame src="title.wsgi" name="title">
     <frameset cols="65%, 35%", class="home blog">
       <frame src="data.wsgi" name="data">
-      <frame src="info.wsgi" name="info">
+      <frame src="status.wsgi" name="status">
     </frameset>
     <frameset cols="65%, 35%", class="home blog">
       <frame src="cmd.wsgi" name="cmd">
@@ -108,6 +108,35 @@ info_html = """
       Vesrion    : {}<br />
       Python     : {}<br />
       I am : {}
+    </p>
+   </body>
+</html>"""
+
+status_html = """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>BeagleBone Test</title>
+    <meta name="description" content="BeagleBone Test">
+    <meta name="keywords"content="BeagleBone Test">
+    <meta name="identifier-URL" content="http://www.microreflexion.com">
+    <meta http-equiv="refresh" content="10" />
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+  </head>
+
+  <body>
+  <h2>Status</h2>
+    <p>
+      {}
+    </p>
+    <p class="slight">
+      Status :<br /> {}
+    </p>
+    <p>
+      Error :<br /> {}
     </p>
    </body>
 </html>"""

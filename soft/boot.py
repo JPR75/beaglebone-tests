@@ -31,25 +31,25 @@ class infoWindow (Canvas) :
 
   def show_sys_info (self) :
     """Show system info"""
-    platform_info = ("Processor :  {} ; {}\nOS            : {}\nVesrion    : {}\nPython     : {}").format(platform.machine(), platform.processor(), platform.platform(), platform.version(), platform.python_version())
+    platform_info = "Processor :  {} ; {}\nOS            : {}\nVesrion    : {}\nPython     : {}".format(platform.machine(), platform.processor(), platform.platform(), platform.version(), platform.python_version())
     Label(self.sysinfo, text = platform_info, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_sys_RAM (self):
     """Show RAM info"""
     RAMtotal = os.popen("free -m").readlines()[1].split()
     RAMmemory = os.popen("free -m").readlines()[2].split()
-    memory = ("Memory => total : {}  MB ; used : {} MB ; free : {} MB").format(RAMtotal[1], RAMmemory[2], RAMmemory[3])
+    memory = "Memory => total : {}  MB ; used : {} MB ; free : {} MB".format(RAMtotal[1], RAMmemory[2], RAMmemory[3])
     Label(self.sysinfo, text = memory, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_sys_date (self):
     """Show date and time"""
     now = datetime.datetime.now()
-    current_date_time = ("Sys date : {}-{}-{} ; {}h {}mm {}s").format(now.year, now.month, now.day, now.hour, now.minute, now.second)
+    current_date_time = "Sys date : {}-{}-{} ; {}h {}mm {}s".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
     Label(self.sysinfo, text = current_date_time, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_dev_info (self) :
     """Show developpement info"""
-    dev_info = ("Firmware : v1.0.0\nSoftware  : v1.0.0\n\nContact    :\n\nJean-Paul Ricaud\n\nSynchrotron SOLEIL\nL'Orme des Merisiers\nSaint-Aubin - BP 48\nFrance\n\njean-paul.ricaud@synchrotron-soleil.fr")
+    dev_info = "{}\n{}\n\n{}".format(global_data.firmware_version, global_data.software_version, global_data.contact_info)
     Label(self.devinfo, text = dev_info, font = ("DejaVu\ Sans\ Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 10, anchor = W)
 
 #------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ class homeWindow (Canvas) :
   def update_home_page (self) :
     """Home page update"""
     now = datetime.datetime.now()
-    data =  "hour : {}\nminute : {}\nsecond : {}".format(now.hour, now.minute, now.second)
+    data = "hour : {}\nminute : {}\nsecond : {}".format(now.hour, now.minute, now.second)
     self.showData.configure(text = data)
     # Get data
     try :

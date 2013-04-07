@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/python
 # -*- coding: utf-8 -*-
 
 import os
@@ -28,7 +28,7 @@ class dataBaseSQL () :
       cur.execute("INSERT INTO data VALUES(0.0000, 0.0000, 0.00)")
 
       cur.execute("CREATE TABLE status (info TEXT, error TEXT)")
-      cur.execute("INSERT INTO status VALUES('Data base init OK', 'No errors')")
+      cur.execute("INSERT INTO status VALUES('System up and running', 'No error')")
 
       conn.commit()
       cur.close()
@@ -70,6 +70,21 @@ class dataBaseSQL () :
       conn.close()
       return result
 
+  def get_status_sql (self) :
+    """Get status from data base"""
+    try :
+      conn = sqlite3.connect(self.dbName, timeout = 2)
+    except sqlite3.OperationalError as e :
+      print("*** Error while connecting database to read data in 'sql_setup.py' : {}\n".format(e))
+      raise
+    else :
+      cur = conn.cursor()
+      cur.execute("SELECT * FROM status")
+      result = cur.fetchall()
+      cur.close()
+      conn.close()
+      return result
+
   def set_cmd_sql (self, data) :
     """Change cmd in data base"""
     try :
@@ -104,6 +119,3 @@ class dataBaseSQL () :
 if __name__ =="__main__" :
   setup_db = setupSQL ()
   setup_db.create_sql_bases ("www/data_sql3.db")
-#  setup_db.set_data_sql ("www/data_sql3.db", (1.1111, 2.2222, 35.35))
-#  res = setup_db.get_cmd_sql ("www/data_sql3.db")
-#  print("res = {}".format(res))

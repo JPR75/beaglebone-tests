@@ -34,9 +34,16 @@ p.slight
   font-style: none;
 }
 
+img.centred
+{
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h1
 {
-  background-color: #0A1040;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
