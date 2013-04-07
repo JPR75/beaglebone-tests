@@ -6,299 +6,48 @@ Author: JPR75
 Version: 1.0.0
 Licence: GNU Affero General Public License
 License URI: http://www.gnu.org/licenses/agpl.html
-Tags: grey, black, white, one-column, two-columns, fixed-width
 */
-a
-{
-  font-family: 'ArialMT', 'Arial', sans-serif;
-  text-decoration: none;
-}
-a:link { color: #74A8F5; text-decoration: underline; }
-a:visited { color: #C7554B; text-decoration: underline; }
-a:hover { color: #FFD600; text-decoration: underline; }
-a:active { color: #FB9622; text-decoration: underline; }
-
-a.ttl:link { color: #74A8F5; text-decoration: none; }
-a.ttl:visited { color: #C7554B; text-decoration: none; }
-a.ttl:hover { color: #FFD600; text-decoration: none; }
-a.ttl:active { color: #FB9622; text-decoration: none; }
 
 body
 {
   font-family: 'ArialMT', 'Arial', sans-serif;
-  width: 700px;
+  width: 350px;
   margin-left: auto;
   margin-right: auto;
-  color: #CCCCBF;
-  background-color: #222222;
+  color: #DDDDBF;
+  background-color: #1B2A5A;
   text-align: left;
   text-decoration: none;
 }
 
-ul.headlk
-{
-  list-style-type: none;
-  text-align: center;
-  font-size: 120%;
-}
-
-li.page_item
-{
-  display: inline;
-  padding: 10px;
-  font-weight: none;
-}
-li.page_item a:link { color: #74A8F5; text-decoration: none; }
-li.page_item a:visited { color: #C7554B; text-decoration: none; }
-li.page_item a:hover {  color: #FFD600; text-decoration: underline; }
-li.page_item a:active { color: #FB9622; text-decoration: none; }
-
-li.current_page_item a:link
+p.emphase
 {
   font-weight: bold;
-  padding-bottom: 2px;
-  border-bottom: 4px solid #74A8F5;
+  font-size: 170%;
+  font-style: none;
 }
-li.current_page_item a:visited
+
+p.slight
 {
   font-weight: bold;
-  padding-bottom: 2px;
-  border-bottom: 4px solid #74A8F5;
+  font-size: 150%;
+  font-style: none;
 }
 
-hr.headlk
+h1
 {
-  width: 100%;
-  border-style: none;
-  background-color: #74A8F5;
-  height: 2px;
-}
-
-hr.post
-{
-  width: 100%;
-  border-style: none;
-  background-color: #74A8F5;
-  height: 1px;
-}
-
-#headlink
-{
-  position: relative;
-  top: 5px;
+  background-color: #0A1040;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
-}
-
-#sitename
-{
-  position: relative;
-  top: 20px;
-  text-align: center;
-  font-size: 350%;
-  color: #2458A5;
-}
-
-hr.ms2
-{
-  width: 50%;
-  border-style: none;
-  background-color: #222222;
-  height: 2px;
-}
-
-#postms2
-{
-  background-color: #222222;
-}
-
-#pms2
-{
-  clear: both;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#datems2
-{
-  float: left;
-  font-size: 130%;
-  width: 20%;
-  background-color: #6F8836;
-  text-align: center;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  color: #FFFFFF;
 }
 
 h2
 {
- color: #8FA856;
-}
-
-h3.titlems2
-{
-  position: relative;
-  top: auto;
-  margin-left: 23%;
-  margin-top: 0px;
-  text-align: left;
-  width: 77%;
-  background-color: #222222;
-}
-
-p.postedata
-{
-  font-size: 80%;
-  font-style: italic;
-}
-
-#feedback
-{
-  background-color: #222222;
-}
-
-#wp-calendar
-{
-  border: 0;
-}
-
-#mscreen1
-{
-  position: relative;
-  top: 40px;
-}
-
-#mscreen2
-{
-  position: relative;
-  float: left;
-  width: 700px;
-}
-
-#ppage
-{
-  float: left;
-  text-align: left;
-}
-
-#npage { text-align: right; }
-
-#sidescreen
-{
-  width: 240px;
-  position: relative;
-  top: 0px;
-  right: 0px;
-  float: right;
-  float: left;
-  font-size: 90%;
-}
-
-#footer
-{
-  position: relative;
-  top: 30px;
-  clear: left;
-  text-align: center;
-  font-size: 80%;
-}
-
-#respond {
-	border-top: 1px solid #e7e7e7;
-	margin: 30px 0;
-}
-
-.wp-caption {
-  background: #2458A5;
-  line-height: 18px;
-  margin-bottom: 20px;
-  max-width: 700px !important; /* prevent too-wide images from breaking layout */
-  padding: 4px;
+  color: #BFD886;
+  background-color: #550000;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
-.wp-caption img {
-  margin: 5px 5px 0;
-}
-.wp-caption p.wp-caption-text {
-  color: #888;
-  font-size: 12px;
-  margin: 5px;
-}
-.wp-caption-text {
-  font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
-}
 
-.gallery {
-	margin: 0 auto 18px;
-}
-.gallery .gallery-item {
-	float: left;
-	margin-top: 0;
-	text-align: center;
-	width: 33%;
-}
-.gallery-columns-2 .gallery-item {
-	width: 50%;
-}
-.gallery-columns-4 .gallery-item {
-	width: 25%;
-}
-.gallery img {
-	border: 2px solid #cfcfcf;
-}
-.gallery-columns-2 .attachment-medium {
-	max-width: 92%;
-	height: auto;
-}
-.gallery-columns-4 .attachment-thumbnail {
-	max-width: 84%;
-	height: auto;
-}
-.gallery .gallery-caption {
-	color: #888;
-	font-size: 12px;
-	margin: 0 0 12px;
-}
-.gallery dl {
-	margin: 0;
-}
-.gallery img {
-	border: 10px solid #f1f1f1;
-}
-.gallery br+br {
-	display: none;
-}
-
-.alignleft,
-img.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 24px;
-	margin-top: 4px;
-}
-.alignright,
-img.alignright {
-	display: inline;
-	float: right;
-	margin-left: 24px;
-	margin-top: 4px;
-}
-.aligncenter,
-img.aligncenter {
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-img.alignleft,
-img.alignright,
-img.aligncenter {
-	margin-bottom: 12px;
-}
-
-.home .sticky {
-  background: #2458A5;
-  padding: 18px 20px;
-}
-.bypostauthor {
-}
