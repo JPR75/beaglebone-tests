@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import sys
 
 sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
@@ -10,10 +12,10 @@ from templates import status_html
 def application (environ, start_response) :
   dataBase = dataBaseSQL (global_data.db_path)
   try :
-    status_icon = '<img class="centred" src="img/ok-icon.png" alt="OK" height="64" width="64" />'
+    status_icon = 'ok-icon.png'
     result = dataBase.get_status_sql ()
   except :
-    status_icon = '<img class="centred" src="img/Erreur-icon.png" alt="Error" height="64" width="64" />'
+    status_icon = 'Erreur-icon.png'
     result = [("System down", "Data base error")]
     print("*** Error while connecting database to read data in 'data.wsgi'\n")
     raise

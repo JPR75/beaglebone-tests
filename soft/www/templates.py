@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 cmd_html = """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -103,10 +104,14 @@ info_html = """
   <body>
   <h2>Info</h2>
     <p>
-      Processor :  {} ; {}<br />
-      OS            : {}<br />
-      Vesrion    : {}<br />
-      Python     : {}<br />
+      {}<br />
+      {}
+    </p>
+    <p>
+      Processor : {} ; {}<br />
+      OS : {}<br />
+      Vesrion : {}<br />
+      Python : {}<br />
       I am : {}
     </p>
    </body>
@@ -130,7 +135,7 @@ status_html = """
   <body>
   <h2>Status</h2>
     <p>
-      {}
+      <img class="centred" src="img/{}" />
     </p>
     <p class="slight">
       {}

@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from cgi import parse_qs, escape
 import sys
 import re
