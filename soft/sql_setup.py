@@ -13,7 +13,12 @@ class dataBaseSQL () :
     self.dbName = dbName
 
   def create_sql_bases (self) :
-    """Create a sqlite3 base"""
+    """
+      Create a sqlite3 base
+      state : 0 = error
+               1 = ok
+               2 = warning
+    """
     try :
       conn = sqlite3.connect(self.dbName, timeout = 2)
     except sqlite3.OperationalError as e :
@@ -27,8 +32,8 @@ class dataBaseSQL () :
       cur.execute("CREATE TABLE data (phase REAL, amplitute REAL, temperature REAL)")
       cur.execute("INSERT INTO data VALUES(0.0000, 0.0000, 0.00)")
 
-      cur.execute("CREATE TABLE status (info TEXT, error TEXT)")
-      cur.execute("INSERT INTO status VALUES('System up and running', 'No error')")
+      cur.execute("CREATE TABLE status (info TEXT, error TEXT, state INTEGER)")
+      cur.execute("INSERT INTO status VALUES('System up and running', 'No error', 1)")
 
       conn.commit()
       cur.close()
@@ -109,6 +114,20 @@ class dataBaseSQL () :
     else :
       cur = conn.cursor()
       cur.execute("UPDATE data SET phase = ?, amplitute = ?, temperature = ?", data)
+      conn.commit()
+      cur.close()
+      conn.close()
+
+  def set_status_sql (self, data) :
+    """Change status in data base"""
+    try :
+      conn = sqlite3.connect(self.dbName, timeout = 2)
+    except sqlite3.OperationalError as e :
+      print("*** Error while connecting database to write data in 'sql_setup.py' : {}\n".format(e))
+      raise
+    else :
+      cur = conn.cursor()
+      cur.execute("UPDATE status SET info = ?, error = ?, state = ?", data)
       conn.commit()
       cur.close()
       conn.close()

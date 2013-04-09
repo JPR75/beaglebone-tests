@@ -11,14 +11,16 @@ from templates import status_html
 
 def application (environ, start_response) :
   dataBase = dataBaseSQL (global_data.db_path)
+  status_icon = 'error.png'
   try :
-    status_icon = 'ok-icon.png'
     result = dataBase.get_status_sql ()
+    if result[0][2] == 1 :
+      status_icon = 'ok.png'
+    elif result[0][2] == 2 :
+      status_icon = 'warning.png'
   except :
-    status_icon = 'Erreur-icon.png'
-    result = [("System down", "Data base error")]
+    result = [("System down", "Data base error", 0)]
     print("*** Error while connecting database to read data in 'data.wsgi'\n")
-    raise
   response_body = setup_html.format(status_icon, result[0][0], result[0][1])
 
   status = '200 OK'

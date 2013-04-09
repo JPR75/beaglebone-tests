@@ -127,7 +127,7 @@ status_html = """
     <meta name="description" content="BeagleBone Test">
     <meta name="keywords"content="BeagleBone Test">
     <meta name="identifier-URL" content="http://www.microreflexion.com">
-    <meta http-equiv="refresh" content="10" />
+    <meta http-equiv="refresh" content="3" />
 
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
   </head>

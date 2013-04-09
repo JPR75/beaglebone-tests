@@ -18,9 +18,11 @@ from sql_setup import dataBaseSQL
 class infoWindow (Canvas) :
   """Info window"""
   def __init__(self, mainCanevas) :
+    self.dataBase = dataBase
     # System info
     self.sysinfo = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.sysinfo.grid(row = 1, column = 0, padx = 5, pady = 0, sticky = N)
+    self.set_warning_info ()
     self.show_sys_info ()
     self.show_sys_RAM ()
     self.show_sys_date ()
@@ -28,6 +30,15 @@ class infoWindow (Canvas) :
     self.devinfo = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.devinfo.grid(row = 1, column = 1, padx = 5, pady = 0, sticky = N)
     self.show_dev_info ()
+
+  def set_warning_info (self) :
+    """Show warning info & set data base statue to warning"""
+    # Push to data base
+    try :
+      self.dataBase.set_status_sql (("System up, but stopped. Select 'Run' button on front panel to start.", "No error", 2))
+    except :
+      print("*** Error while connecting database to write data in 'boot.py'\n")
+    Label(self.sysinfo, text = "Warning system stopped! Select 'Run' button to start", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, fg = "red", bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_sys_info (self) :
     """Show system info"""
@@ -65,7 +76,16 @@ class homeWindow (Canvas) :
     self.showData.pack(padx = 20, pady = 5, anchor = W)
     self.showCmd = Label(self.homePage, text = "delta : 000.0000\nT°C : 00.00", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
     self.showCmd.pack(padx = 20, pady = 5, anchor = W)
+    self.remove_warning ()
     self.update_home_page ()
+
+  def remove_warning (self) :
+    """Set data base statue to ok"""
+    # Push to data base
+    try :
+      self.dataBase.set_status_sql (("System up and running", "No error", 1))
+    except :
+      print("*** Error while connecting database to write data in 'boot.py'\n")
 
   def update_home_page (self) :
     """Home page update"""
@@ -113,7 +133,7 @@ class mainMenuBar (object) :
     self.menu = menuFrame
     self.dataBase = dataBase
     # Menu buttons
-    Button(self.menu, text = '  Home   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.home_app).grid(row = 0, column = 0, padx = 5, pady = 5)
+    Button(self.menu, text = '   Run   ', font = ("DejaVu\ Sans\ Mono", 10), bg = "green", command = self.home_app).grid(row = 0, column = 0, padx = 5, pady = 5)
     Button(self.menu, text = '  Info   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.info_app).grid(row = 0, column = 1, padx = 5, pady = 5)
     Button(self.menu, text = '  Exit   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.exit_app).grid(row = 0, column = 2, padx = 5, pady = 5)
     Button(self.menu, text = ' Reboot  ', font = ("DejaVu\ Sans \Mono", 10), command = self.reboot).grid(row = 0, column = 3, padx = 5, pady = 5)
