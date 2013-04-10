@@ -38,7 +38,7 @@ class infoWindow (Canvas) :
       self.dataBase.set_status_sql (("System up, but stopped. Select 'Run' button on front panel to start.", "No error", 2))
     except :
       print("*** Error while connecting database to write data in 'boot.py'\n")
-    Label(self.sysinfo, text = "Warning system stopped! Select 'Run' button to start", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, fg = "red", bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
+    Label(self.sysinfo, text = "Warning system stopped! Select 'Run' button to start", font = ("DejaVu\ Sans \Mono", 12), relief = GROOVE, fg = "red", bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_sys_info (self) :
     """Show system info"""
@@ -72,9 +72,9 @@ class homeWindow (Canvas) :
     self.dataBase = dataBase
     self.homePage = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.homePage.grid(row = 1, column = 0, padx = 5, pady = 0)
-    self.showData = Label(self.homePage, text = "hour : 00.00\nminute : 00.00\nsecond : 0.00", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showData = Label(self.homePage, text = "\u0394\u03A6 : 00.00\nAmp : 00.00\nT°C : 0.00", font = ("DejaVu\ Sans \Mono", 40), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
     self.showData.pack(padx = 20, pady = 5, anchor = W)
-    self.showCmd = Label(self.homePage, text = "delta : 000.0000\nT°C : 00.00", font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showCmd = Label(self.homePage, text = "Setting\n   \u0394\u03A6 : 000.0000\n   T°C : 00.00", font = ("DejaVu\ Sans \Mono", 16), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
     self.showCmd.pack(padx = 20, pady = 5, anchor = W)
     self.remove_warning ()
     self.update_home_page ()
@@ -90,7 +90,7 @@ class homeWindow (Canvas) :
   def update_home_page (self) :
     """Home page update"""
     now = datetime.datetime.now()
-    data = "hour : {}\nminute : {}\nsecond : {}".format(now.hour, now.minute, now.second)
+    data = "\u0394\u03A6 : {}\nAmp : {}\nT°C : {}".format(now.hour, now.minute, now.second)
     self.showData.configure(text = data)
     # Get data
     try :
@@ -98,7 +98,7 @@ class homeWindow (Canvas) :
     except :
       cmd = [("---.----", "--.--")]
       print("*** Error while connecting database to read cmd in 'boot.py'\n")
-    self.showCmd.configure(text = "delta : {}\nT°C : {}".format(cmd[0][0], cmd[0][1]))
+    self.showCmd.configure(text = "Setting\n   \u0394\u03A6 : {}\n   T°C : {}".format(cmd[0][0], cmd[0][1]))
     # Push to data base
     try :
       self.dataBase.set_data_sql ((float(now.hour), float(now.minute), float(now.second)))
