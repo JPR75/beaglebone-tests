@@ -20,7 +20,6 @@ def application (environ, start_response) :
       status_icon = 'warning.png'
   except :
     result = [("System down", "Data base error", 0)]
-    print("*** Error while connecting database to read data in 'data.wsgi'\n")
   response_body = setup_html.format(status_icon, result[0][0], result[0][1])
 
   status = '200 OK'

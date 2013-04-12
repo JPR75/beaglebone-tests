@@ -29,7 +29,6 @@ def application (environ, start_response) :
         dataBase.set_cmd_sql ((float(delta), 32.00))
       except :
         delta = "Data base access error"
-        print("*** Error while connecting database to write data in 'cmd.wsgi'\n")
   response_body = cmd_html.format(delta, value)
 
   status = '200 OK'

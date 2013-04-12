@@ -17,8 +17,6 @@ def application (environ, start_response) :
     result = dataBase.get_data_sql ()
   except :
     result = [("---.----", "---.----", "--.--")]
-    print("*** Error while connecting database to read data in 'data.wsgi'\n")
-    raise
   response_body = data_html.format(result[0][0], result[0][1], result[0][2])
 
   status = '200 OK'

@@ -8,6 +8,17 @@ Licence: GNU Affero General Public License
 License URI: http://www.gnu.org/licenses/agpl.html
 */
 
+a
+{
+  font-family: 'ArialMT', 'Arial', sans-serif;
+  text-decoration: none;
+}
+
+a:link { color: #AAEEAA; text-decoration: none; }
+a:visited { color: #AAEEAA; text-decoration: none; }
+a:hover { color: #FFFFFF; text-decoration: underline; }
+a:active { color: #AAEEAA; text-decoration: none; }
+
 body
 {
   font-family: 'ArialMT', 'Arial', sans-serif;
@@ -33,6 +44,8 @@ p.slight
   font-size: 150%;
   font-style: none;
 }
+
+p.centred { text-align: center; }
 
 img.centred
 {

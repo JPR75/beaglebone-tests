@@ -74,7 +74,7 @@ index_html = """
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
   </head>
 
-  <frameset rows="10%, 60%, 30%", class="home blog">
+  <frameset rows="10%, 50%, 40%", class="home blog">
     <frame src="title.wsgi" name="title">
     <frameset cols="65%, 35%", class="home blog">
       <frame src="data.wsgi" name="data">
@@ -103,6 +103,9 @@ info_html = """
 
   <body>
   <h2>Info</h2>
+    <p class="centred">
+      <a href="#" onclick="Popup=window.open('help.html','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">  > Help < </a>
+    </p>
     <p>
       {}<br />
       {}
