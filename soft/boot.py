@@ -25,6 +25,7 @@ class infoWindow (Canvas) :
     self.set_warning_info ()
     self.show_sys_info ()
     self.show_sys_RAM ()
+    self.show_sys_IP ()
     self.show_sys_date ()
     # Dev info
     self.devinfo = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
@@ -51,6 +52,11 @@ class infoWindow (Canvas) :
     RAMmemory = os.popen("free -m").readlines()[2].split()
     memory = "Memory => total : {}  MB ; used : {} MB ; free : {} MB".format(RAMtotal[1], RAMmemory[2], RAMmemory[3])
     Label(self.sysinfo, text = memory, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
+
+  def show_sys_IP (self):
+    """Show IP info"""
+    IP = os.popen("/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'").readlines()[0][:-1]
+    Label(self.sysinfo, text = "IP : {}".format(IP), font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_sys_date (self):
     """Show date and time"""
@@ -133,11 +139,11 @@ class mainMenuBar (object) :
     self.menu = menuFrame
     self.dataBase = dataBase
     # Menu buttons
-    Button(self.menu, text = '   Run   ', font = ("DejaVu\ Sans\ Mono", 10), bg = "green", command = self.home_app).grid(row = 0, column = 0, padx = 5, pady = 5)
+    Button(self.menu, text = '   Run   ', font = ("DejaVu\ Sans\ Mono", 10, "bold"), bg = "green", command = self.home_app).grid(row = 0, column = 0, padx = 5, pady = 5)
     Button(self.menu, text = '  Info   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.info_app).grid(row = 0, column = 1, padx = 5, pady = 5)
-    Button(self.menu, text = '  Exit   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.exit_app).grid(row = 0, column = 2, padx = 5, pady = 5)
-    Button(self.menu, text = ' Reboot  ', font = ("DejaVu\ Sans \Mono", 10), command = self.reboot).grid(row = 0, column = 3, padx = 5, pady = 5)
-    Button(self.menu, text = 'Shut down', font = ("DejaVu\ Sans\ Mono", 10), command = self.shut_down).grid(row = 0, column = 4, padx = 5, pady = 5)
+    Button(self.menu, text = '  Exit   ', font = ("DejaVu\ Sans\ Mono", 10), bg = "gold", command = self.exit_app).grid(row = 0, column = 2, padx = 5, pady = 5)
+    Button(self.menu, text = ' Reboot  ', font = ("DejaVu\ Sans \Mono", 10), bg = "red", command = self.reboot).grid(row = 0, column = 3, padx = 5, pady = 5)
+    Button(self.menu, text = 'Shut down', font = ("DejaVu\ Sans\ Mono", 10), bg = "red", command = self.shut_down).grid(row = 0, column = 4, padx = 5, pady = 5)
     # Create the canva for displaying information
     canvasWindows = mainCanvasWindows (self.mainFrame)
     self.mainCanevas = canvasWindows.get_mainCanvas_ID ()
