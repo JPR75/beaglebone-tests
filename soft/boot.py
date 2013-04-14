@@ -13,6 +13,32 @@ from startup import startup
 from sql_setup import dataBaseSQL
 
 #------------------------------------------------------------------------------
+# Help window class
+#------------------------------------------------------------------------------
+class helpWindow (Canvas) :
+  """Help window"""
+  def __init__(self, mainCanevas) :
+    self.dataBase = dataBase
+    # System info
+    self.helpPage = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
+    self.helpPage.grid(row = 1, column = 0, padx = 5, pady = 0, sticky = N)
+    self.set_warning_help ()
+    self.show_help ()
+
+  def set_warning_help (self) :
+    """Show warning info & set data base statue to warning"""
+    # Push to data base
+    try :
+      self.dataBase.set_status_sql (("System up, but stopped. Select 'Run' button on front panel to start.", "No error", 2))
+    except :
+      print("*** Error while connecting database to write data in 'boot.py'\n")
+    Label(self.helpPage, text = "Warning system stopped! Select 'Run' button to start", font = ("DejaVu\ Sans \Mono", 12), relief = GROOVE, fg = "red", bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
+
+  def show_help (self) :
+    """Show help"""
+    Label(self.helpPage, text = "{}".format(global_data.help_txt), font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
+
+#------------------------------------------------------------------------------
 # Info window class
 #------------------------------------------------------------------------------
 class infoWindow (Canvas) :
@@ -141,9 +167,10 @@ class mainMenuBar (object) :
     # Menu buttons
     Button(self.menu, text = '   Run   ', font = ("DejaVu\ Sans\ Mono", 10, "bold"), bg = "green", command = self.home_app).grid(row = 0, column = 0, padx = 5, pady = 5)
     Button(self.menu, text = '  Info   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.info_app).grid(row = 0, column = 1, padx = 5, pady = 5)
-    Button(self.menu, text = '  Exit   ', font = ("DejaVu\ Sans\ Mono", 10), bg = "gold", command = self.exit_app).grid(row = 0, column = 2, padx = 5, pady = 5)
-    Button(self.menu, text = ' Reboot  ', font = ("DejaVu\ Sans \Mono", 10), bg = "red", command = self.reboot).grid(row = 0, column = 3, padx = 5, pady = 5)
-    Button(self.menu, text = 'Shut down', font = ("DejaVu\ Sans\ Mono", 10), bg = "red", command = self.shut_down).grid(row = 0, column = 4, padx = 5, pady = 5)
+    Button(self.menu, text = '  Help   ', font = ("DejaVu\ Sans\ Mono", 10), command = self.help_app).grid(row = 0, column = 2, padx = 5, pady = 5)
+    Button(self.menu, text = '  Exit   ', font = ("DejaVu\ Sans\ Mono", 10), bg = "gold", command = self.exit_app).grid(row = 0, column = 3, padx = 5, pady = 5)
+    Button(self.menu, text = ' Reboot  ', font = ("DejaVu\ Sans \Mono", 10), bg = "red", command = self.reboot).grid(row = 0, column = 4, padx = 5, pady = 5)
+    Button(self.menu, text = 'Shut down', font = ("DejaVu\ Sans\ Mono", 10), bg = "red", command = self.shut_down).grid(row = 0, column = 5, padx = 5, pady = 5)
     # Create the canva for displaying information
     canvasWindows = mainCanvasWindows (self.mainFrame)
     self.mainCanevas = canvasWindows.get_mainCanvas_ID ()
@@ -153,13 +180,19 @@ class mainMenuBar (object) :
     self.mainCanevas.destroy()
     canvasWindows = mainCanvasWindows (self.mainFrame)
     self.mainCanevas = canvasWindows.get_mainCanvas_ID ()
-    homePage = homeWindow (self.mainCanevas, self.dataBase)
+    homeWindow (self.mainCanevas, self.dataBase)
+
+  def help_app (self) :
+    self.mainCanevas.destroy()
+    canvasWindows = mainCanvasWindows (self.mainFrame)
+    self.mainCanevas = canvasWindows.get_mainCanvas_ID ()
+    helpWindow (self.mainCanevas)
 
   def info_app (self) :
     self.mainCanevas.destroy()
     canvasWindows = mainCanvasWindows (self.mainFrame)
     self.mainCanevas = canvasWindows.get_mainCanvas_ID ()
-    sysInfo = infoWindow (self.mainCanevas)
+    infoWindow (self.mainCanevas)
 
   def exit_app (self) :
     self.mainFrame.quit()
