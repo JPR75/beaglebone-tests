@@ -24,11 +24,14 @@ def application (environ, start_response) :
     if not re.match(r'^[0-9]\d*(\.\d+)?$', delta) :
       delta = "Error"
     else :
-      value = delta
-      try :
-        dataBase.set_cmd_sql ((float(delta), 32.00))
-      except :
-        delta = "Data base access error"
+      if (float(delta) < 0.0) or (float(delta) > 360.0) :
+        delta = "Phase should be > 0.000 and < 360.000"
+      else :
+        value = delta
+        try :
+          dataBase.set_cmd_sql ((float(delta), 32.00))
+        except :
+          delta = "Data base access error"
   response_body = cmd_html.format(delta, value)
 
   status = '200 OK'

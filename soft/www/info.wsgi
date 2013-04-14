@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import sys
-import platform
-import datetime
-import subprocess as sub
 
 sys.path.insert(0, '/home/ubuntu/ramdisk/soft/www/template.py')
 sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
@@ -15,14 +11,7 @@ from templates import info_html
 import global_data
 
 def application (environ, start_response) :
-#  os.system("echo 1 > /sys/class/leds/beaglebone::usr3/brightness")
-  value = open("/sys/class/leds/beaglebone::usr3/brightness",'w')
-  value.write(str(1))
-  value.close()
-
-  p = sub.Popen('whoami',stdout=sub.PIPE,stderr=sub.PIPE)
-  output, errors = p.communicate()
-  response_body = info_html.format(global_data.firmware_version, global_data.software_version, platform.machine(), platform.processor(), platform.platform(), platform.version(), platform.python_version(), output)
+  response_body = info_html.format(global_data.firmware_version, global_data.software_version)
 
   status = '200 OK'
   response_headers = [('Content-Type', 'text/html'), ('Content-Length', str(len(response_body)))]

@@ -1,6 +1,35 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+admin_html = """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>BeagleBone Test</title>
+    <meta name="description" content="BeagleBone Test">
+    <meta name="keywords"content="BeagleBone Test">
+    <meta name="identifier-URL" content="http://www.microreflexion.com">
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+  </head>
+
+  <body>
+  <h2>Admin</h2>
+    <p>
+      Processor : {} ; {}<br />
+      OS : {}<br />
+      Vesrion : {}<br />
+      Python : {}<br />
+      I am : {}
+    </p>
+    <p class="centred">
+      <a href="javascript:self.close();"> > close window < </a>
+    </p>
+   </body>
+</html>"""
+
 cmd_html = """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -110,12 +139,8 @@ info_html = """
       {}<br />
       {}
     </p>
-    <p>
-      Processor : {} ; {}<br />
-      OS : {}<br />
-      Vesrion : {}<br />
-      Python : {}<br />
-      I am : {}
+    <p class="centred">
+      <a href="#" onclick="Popup=window.open('admin.wsgi','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">  > Admin < </a>
     </p>
    </body>
 </html>"""
