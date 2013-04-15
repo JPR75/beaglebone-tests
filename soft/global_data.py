@@ -16,3 +16,6 @@ db_path = "/home/ubuntu/ramdisk/soft/www/data_sql3.db"
 stratup_time = 0.0
 stratup_RAM  = ""
 
+# Admin pwd
+admin_pwd = "7ae91781fb3bcd5e14530f2175f443da"
+

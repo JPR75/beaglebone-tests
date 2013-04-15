@@ -38,7 +38,7 @@ Si pb connection ssh : supprimer la ligne 192.168.1.44 du fichier home/JPR75/.ss
 #######################################################################################################
 
 #######################################################################################################
-# Angstrom
+# Allumage LED
 echo 1 > /sys/class/leds/beaglebone::usr3/brightness
 echo 0 > /sys/class/leds/beaglebone::usr3/brightness
 [si pb droit : sudo chmod a+rw /sys/class/leds/beaglebone::usr3/brightness]

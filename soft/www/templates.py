@@ -25,15 +25,34 @@ admin_html = """
       Free RAM : {} MB
     </p>
     <p>
-       Processor : {} ; {}<br />
-       OS : {}<br />
-       Vesrion : {}<br />
-       Python : {}<br />
-       I am : {}
-     </p>
-     <p class="centred">
-       <a href="javascript:self.close();"> > close window < </a>
-     </p>
+      Processor : {} ; {}<br />
+      OS : {}<br />
+      Vesrion : {}<br />
+      Python : {}<br />
+      I am : {}
+    </p>
+    <hr />
+    <form method="get" action="admin.wsgi">
+      <img class="centred" src="img/danger.png" />
+      <p>
+        Admin password : <input type="password" name="pwd">
+      </p>
+      <p>
+        <input name="admin_action" type="radio" value="reboot"> Reboot<br />
+        <input name="admin_action" type="radio" value="shut_down"> Shut down
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+    </form>
+    <p>
+      pwd : {}<br />
+      action : {}
+    </p>
+    <hr />
+    <p class="centred">
+      <a href="javascript:self.close();"> > close window < </a>
+    </p>
   </body>
 </html>"""
 
@@ -143,7 +162,7 @@ info_html = """
       <a href="#" onclick="Popup=window.open('help.html','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">   &gt; Help &lt; </a>
     </p>
     <p class="centred">
-      <a href="#" onclick="Popup=window.open('admin.wsgi','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">  &gt; Admin &lt; </a>
+      <a href="#" onclick="Popup=window.open('admin.wsgi','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=600'); return false;">  &gt; Admin &lt; </a>
     </p>
   </body>
 </html>"""
