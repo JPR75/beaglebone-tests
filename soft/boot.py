@@ -52,7 +52,7 @@ class infoWindow (Canvas) :
     self.show_sys_info ()
     self.show_sys_RAM ()
     self.show_sys_IP ()
-    self.show_sys_date ()
+    self.show_sys_data ()
     # Dev info
     self.devinfo = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.devinfo.grid(row = 1, column = 1, padx = 5, pady = 0, sticky = N)
@@ -84,11 +84,14 @@ class infoWindow (Canvas) :
     IP = os.popen("/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'").readlines()[0][:-1]
     Label(self.sysinfo, text = "IP : {}".format(IP), font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
-  def show_sys_date (self):
-    """Show date and time"""
+  def show_sys_data (self):
+    """Show date and time info"""
     now = datetime.datetime.now()
-    current_date_time = "Sys date : {}-{}-{} ; {}h {}mm {}s".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
-    Label(self.sysinfo, text = current_date_time, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
+    uptime = (time.time() - global_data.stratup_time) / 3600.0
+    free_RAM = os.popen("free -m").readlines()[2].split()
+    memory_leak =  int(free_RAM[3]) - global_data.stratup_RAM
+    current_data = "Sys date : {}-{}-{} ; {}h {}mm {}s\nUptime : {:.2f} h\nMemory leak : {} MB".format(now.year, now.month, now.day, now.hour, now.minute, now.second, uptime, memory_leak)
+    Label(self.sysinfo, text = current_data, font = ("DejaVu\ Sans \Mono", 10), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT).pack(padx = 20, pady = 5, anchor = W)
 
   def show_dev_info (self) :
     """Show developpement info"""

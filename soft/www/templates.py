@@ -16,18 +16,25 @@ admin_html = """
   </head>
 
   <body>
-  <h2>Admin</h2>
+    <h2>Admin</h2>
     <p>
-      Processor : {} ; {}<br />
-      OS : {}<br />
-      Vesrion : {}<br />
-      Python : {}<br />
-      I am : {}
+      {}<br />
+      {}
     </p>
-    <p class="centred">
-      <a href="javascript:self.close();"> > close window < </a>
+    <p>
+      Free RAM : {} MB
     </p>
-   </body>
+    <p>
+       Processor : {} ; {}<br />
+       OS : {}<br />
+       Vesrion : {}<br />
+       Python : {}<br />
+       I am : {}
+     </p>
+     <p class="centred">
+       <a href="javascript:self.close();"> > close window < </a>
+     </p>
+  </body>
 </html>"""
 
 cmd_html = """
@@ -57,7 +64,7 @@ cmd_html = """
         <input type="submit" value="Submit">
       </p>
     </form>
-   </body>
+  </body>
 </html>"""
 
 data_html = """
@@ -76,7 +83,7 @@ data_html = """
   </head>
 
   <body>
-  <h2>Data</h2>
+    <h2>Data</h2>
     <p class="emphase">
       &Delta;&Phi; = {}
     </p>
@@ -86,7 +93,7 @@ data_html = """
     <p class="emphase">
       T&deg;C = {}
     </p>
-   </body>
+  </body>
 </html>"""
 
 index_html = """
@@ -131,18 +138,14 @@ info_html = """
   </head>
 
   <body>
-  <h2>Info</h2>
+    <h2>Info</h2>
     <p class="centred">
-      <a href="#" onclick="Popup=window.open('help.html','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">  > Help < </a>
-    </p>
-    <p>
-      {}<br />
-      {}
+      <a href="#" onclick="Popup=window.open('help.html','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">   &gt; Help &lt; </a>
     </p>
     <p class="centred">
-      <a href="#" onclick="Popup=window.open('admin.wsgi','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">  > Admin < </a>
+      <a href="#" onclick="Popup=window.open('admin.wsgi','Popup','toolbar=no, location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=420,height=400'); return false;">  &gt; Admin &lt; </a>
     </p>
-   </body>
+  </body>
 </html>"""
 
 status_html = """
@@ -161,7 +164,7 @@ status_html = """
   </head>
 
   <body>
-  <h2>Status</h2>
+    <h2>Status</h2>
     <p>
       <img class="centred" src="img/{}" />
     </p>
@@ -171,7 +174,7 @@ status_html = """
     <p>
       {}
     </p>
-   </body>
+  </body>
 </html>"""
 
 title_html = """
@@ -190,5 +193,5 @@ title_html = """
 
   <body>
     <h1>Beaglebone Test</h1>
-   </body>
+  </body>
 </html>"""
