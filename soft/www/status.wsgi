@@ -8,6 +8,8 @@ sys.path.insert(1, '/home/ubuntu/ramdisk/soft/www/')
 sys.path.append('/home/ubuntu/ramdisk/soft/')
 
 from templates import status_html
+from sql_setup import dataBaseSQL
+import global_data
 
 def application (environ, start_response) :
   dataBase = dataBaseSQL (global_data.db_path)
@@ -20,7 +22,7 @@ def application (environ, start_response) :
       status_icon = 'warning.png'
   except :
     result = [("System down", "Data base error", 0)]
-  response_body = setup_html.format(status_icon, result[0][0], result[0][1])
+  response_body = status_html.format(status_icon, result[0][0], result[0][1])
 
   status = '200 OK'
   response_headers = [('Content-Type', 'text/html'), ('Content-Length', str(len(response_body)))]
