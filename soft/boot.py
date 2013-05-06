@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tkinter import *
+from Tkinter import *
 import os
 import platform
 #import threading
@@ -107,9 +107,9 @@ class homeWindow (Canvas) :
     self.dataBase = dataBase
     self.homePage = Canvas(mainCanevas, bg = "ivory", bd = 0, width = 395, height = 150)
     self.homePage.grid(row = 1, column = 0, padx = 5, pady = 0)
-    self.showData = Label(self.homePage, text = "\u0394\u03A6 : 00.00\nAmp : 00.00\nT\u00b0C : 0.00", font = ("DejaVu\ Sans \Mono", 40), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showData = Label(self.homePage, text = u"\u0394\u03A6 : 00.00\nAmp : 00.00\nT\u00b0C : 0.00", font = ("DejaVu\ Sans \Mono", 40), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
     self.showData.pack(padx = 20, pady = 5, anchor = W)
-    self.showCmd = Label(self.homePage, text = "Setting\n   \u0394\u03A6 : 000.0000\n   T\u00b0C : 00.00", font = ("DejaVu\ Sans \Mono", 16), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
+    self.showCmd = Label(self.homePage, text = u"Setting\n   \u0394\u03A6 : 000.0000\n   T\u00b0C : 00.00", font = ("DejaVu\ Sans \Mono", 16), relief = GROOVE, bg = '#F0F0E0', bd = 2, justify = LEFT)
     self.showCmd.pack(padx = 20, pady = 5, anchor = W)
     self.remove_warning ()
     self.update_home_page ()
@@ -125,7 +125,7 @@ class homeWindow (Canvas) :
   def update_home_page (self) :
     """Home page update"""
     now = datetime.datetime.now()
-    data = "\u0394\u03A6 : {}\nAmp : {}\nT\u00b0C : {}".format(now.hour, now.minute, now.second)
+    data = u"\u0394\u03A6 : {}\nAmp : {}\nT\u00b0C : {}".format(now.hour, now.minute, now.second)
     self.showData.configure(text = data)
     # Get data
     try :
@@ -133,7 +133,7 @@ class homeWindow (Canvas) :
     except :
       cmd = [("---.----", "--.--")]
       print("*** Error while connecting database to read cmd in 'boot.py'\n")
-    self.showCmd.configure(text = "Setting\n   \u0394\u03A6 : {}\n   T\u00b0C : {}".format(cmd[0][0], cmd[0][1]))
+    self.showCmd.configure(text = u"Setting\n   \u0394\u03A6 : {}\n   T\u00b0C : {}".format(cmd[0][0], cmd[0][1]))
     # Push to data base
     try :
       self.dataBase.set_data_sql ((float(now.hour), float(now.minute), float(now.second)))
