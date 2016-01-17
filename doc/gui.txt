@@ -8,7 +8,13 @@ sudo apt-get install --no-install-recommends lubuntu-desktop --no-install-recomm
 sudo apt-get autoclean
 sudo rm /var/cache/apt/archives/*.deb
 sudo vi /etc/lxdm/default.conf ==> autologin=ubuntu
-                                   session=/usr/bin/openbox-lubuntu
+                                   session=/usr/bin/openbox
+                                   #greeter=/usr/lib/lxdm/lxdm-greeter-gtk
+                                   #gtk_theme=Clearlooks
+                                   #bg=/usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png
+                                   #bottom_pane=1
+                                   theme=Industrial
+
 sudo vi /etc/profile           ==> export DISPLAY=:0
 
 [Enlever python 2.7]

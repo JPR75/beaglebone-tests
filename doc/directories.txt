@@ -1,0 +1,125 @@
+ubuntu@arm:~$ ll
+total 76
+drwxr-xr-x 8 ubuntu ubuntu  4096 2015-03-01 21:49 ./
+drwxr-xr-x 3 root   root    4096 2012-09-28 01:17 ../
+-rw------- 1 ubuntu ubuntu 19863 2015-03-01 21:57 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu   220 2011-05-18 19:55 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu  3353 2011-05-18 19:55 .bashrc
+drwx------ 3 ubuntu ubuntu  4096 2013-03-04 23:02 .cache/
+drwx------ 2 ubuntu ubuntu  4096 2013-03-04 23:05 .config/
+drwx------ 3 root   root    4096 2013-03-05 22:40 .dbus/
+drwxr-xr-x 2 ubuntu ubuntu  4096 2013-03-05 23:03 .fontconfig/
+-rw-r--r-- 1 ubuntu ubuntu   726 2013-03-17 18:42 .profile
+drwxrwxrwx 3 root   root      60 2015-03-01 21:49 ramdisk/
+drwxrwxr-x 4 ubuntu ubuntu  4096 2013-05-05 23:35 soft/
+-rwsrwsr-x 1 root   ubuntu   354 2013-05-05 23:18 start_py.sh*
+-rw-r--r-- 1 ubuntu ubuntu     0 2013-03-05 20:45 .sudo_as_admin_successful
+-rw------- 1 ubuntu ubuntu    44 2015-03-01 21:49 .Xauthority
+-rw------- 2 ubuntu ubuntu     0 2013-03-05 22:44 .Xauthority-c
+-rw------- 2 ubuntu ubuntu     0 2013-03-05 22:44 .Xauthority-l
+-rw------- 1 root   root     138 2013-03-05 22:41 .xsession-errors
+
+===============================================================================
+
+ubuntu@arm:~$ ll soft/
+total 44
+drwxrwxr-x 4 ubuntu ubuntu  4096 2013-05-05 23:35 ./
+drwxr-xr-x 8 ubuntu ubuntu  4096 2015-03-01 21:49 ../
+-rws--s--x 1 root   ubuntu 11725 2013-05-05 23:35 boot.py*
+-rws--s--x 1 root   ubuntu   569 2013-05-05 17:51 global_data.py*
+drwx--x--x 2 root   root    4096 2013-03-24 16:44 __pycache__/
+-rws--s--x 1 root   ubuntu  4451 2013-05-05 17:51 sql_setup.py*
+-rws--s--x 1 root   ubuntu   963 2013-05-05 17:51 startup.py*
+drwxrwxrwx 3 ubuntu ubuntu  4096 2013-05-05 18:32 www/
+
+===============================================================================
+
+ubuntu@arm:~$ ll soft/www/
+total 56
+drwxrwxrwx 3 ubuntu ubuntu 4096 2013-05-05 18:32 ./
+drwxrwxr-x 4 ubuntu ubuntu 4096 2013-05-05 23:35 ../
+-rwxr--r-- 1 ubuntu ubuntu 2025 2013-05-05 17:54 admin.wsgi*
+-rwxr--r-- 1 ubuntu ubuntu 1231 2013-05-05 17:54 cmd.wsgi*
+-rwxr--r-- 1 ubuntu ubuntu  770 2013-05-05 17:54 data.wsgi*
+-rwxr--r-- 1 ubuntu ubuntu  788 2013-05-05 17:54 help.html*
+drwxrwxr-x 2 ubuntu ubuntu 4096 2013-05-05 18:22 img/
+-rwxr--r-- 1 ubuntu ubuntu  470 2013-05-05 17:54 index.wsgi*
+-rwxr--r-- 1 ubuntu ubuntu  469 2013-05-05 17:54 info.wsgi*
+-rwxr--r-- 1 ubuntu ubuntu  926 2013-05-05 18:32 status.wsgi*
+-rwx---r-- 1 ubuntu ubuntu 1226 2013-05-05 17:54 style.css*
+-rwxr--r-- 1 ubuntu ubuntu 6815 2013-05-05 17:54 templates.py*
+-rwxr--r-- 1 ubuntu ubuntu  470 2013-05-05 17:54 title.wsgi*
+
+===============================================================================
+
+ubuntu@arm:~$ ll soft/www/img/
+total 84
+drwxrwxr-x 2 ubuntu ubuntu  4096 2013-05-05 18:22 ./
+drwxrwxrwx 3 ubuntu ubuntu  4096 2013-05-05 18:32 ../
+-rwxr--r-- 1 ubuntu ubuntu  5726 2013-05-05 18:22 bug.png*
+-rwxr--r-- 1 ubuntu ubuntu  4994 2013-05-05 18:22 danger.png*
+-rwxr--r-- 1 ubuntu ubuntu  6081 2013-05-05 18:22 error.png*
+-rwxr--r-- 1 ubuntu ubuntu  5782 2013-05-05 18:22 info.png*
+-rwxr--r-- 1 ubuntu ubuntu  4082 2013-05-05 18:22 ok.png*
+-rwxr--r-- 1 ubuntu ubuntu 21418 2013-05-05 18:22 running.png*
+-rwxr--r-- 1 ubuntu ubuntu  6605 2013-05-05 18:22 time.png*
+-rwxr--r-- 1 ubuntu ubuntu  5300 2013-05-05 18:22 warning.png*
+
+===============================================================================
+===============================================================================
+
+ubuntu@arm:~$ ll ramdisk/
+total 4
+drwxrwxrwx 3 root   root     60 2016-01-17 20:45 ./
+drwxr-xr-x 8 ubuntu ubuntu 4096 2016-01-17 20:45 ../
+drwxr-xr-x 5 root   root    240 2016-01-17 20:46 soft/
+
+===============================================================================
+
+ubuntu@arm:~$ ll ramdisk/soft/
+total 44
+drwxr-xr-x 5 root root   240 2016-01-17 20:46 ./
+drwxrwxrwx 3 root root    60 2016-01-17 20:45 ../
+-rwx--x--x 1 root root 11725 2016-01-17 20:45 boot.py*
+-rwxr-xr-x 1 root root   569 2016-01-17 20:45 global_data.py*
+-rw-r--r-- 1 root root   641 2016-01-17 20:45 global_data.pyo
+drwx--x--x 2 root root   100 2016-01-17 20:45 __pycache__/
+drwxr-xr-x 4 root root   160 2016-01-17 20:46 soft/
+-rwxr-xr-x 1 root root  4451 2016-01-17 20:45 sql_setup.py*
+-rw-r--r-- 1 root root  4634 2016-01-17 20:45 sql_setup.pyo
+-rwx--x--x 1 root root   963 2016-01-17 20:45 startup.py*
+-rw------- 1 root root  1267 2016-01-17 20:45 startup.pyo
+drwxrwxrwx 3 root root   280 2016-01-17 20:47 www/
+
+===============================================================================
+
+ubuntu@arm:~$ ll ramdisk/soft/www
+total 48
+drwxrwxrwx 3 root root  280 2016-01-17 20:47 ./
+drwxr-xr-x 5 root root  240 2016-01-17 20:46 ../
+-rwxr--r-- 1 root root 2025 2016-01-17 20:45 admin.wsgi*
+-rwxr--r-- 1 root root 1231 2016-01-17 20:45 cmd.wsgi*
+-rw-rw-rw- 1 root root 4096 2016-01-17 20:47 data_sql3.db
+-rwxr--r-- 1 root root  770 2016-01-17 20:45 data.wsgi*
+-rwxr--r-- 1 root root  788 2016-01-17 20:45 help.html*
+drwxr-xr-x 2 root root  200 2016-01-17 20:45 img/
+-rwxr--r-- 1 root root  470 2016-01-17 20:45 index.wsgi*
+-rwxr--r-- 1 root root  469 2016-01-17 20:45 info.wsgi*
+-rwxr--r-- 1 root root  926 2016-01-17 20:45 status.wsgi*
+-rwx---r-- 1 root root 1226 2016-01-17 20:45 style.css*
+-rwxr--r-- 1 root root 6815 2016-01-17 20:45 templates.py*
+-rwxr--r-- 1 root root  470 2016-01-17 20:45 title.wsgi*
+
+===============================================================================
+
+drwxr-xr-x 2 root root   200 2016-01-17 20:45 ./
+drwxrwxrwx 3 root root   280 2016-01-17 20:48 ../
+-rwxr--r-- 1 root root  5726 2016-01-17 20:45 bug.png*
+-rwxr--r-- 1 root root  4994 2016-01-17 20:45 danger.png*
+-rwxr--r-- 1 root root  6081 2016-01-17 20:45 error.png*
+-rwxr--r-- 1 root root  5782 2016-01-17 20:45 info.png*
+-rwxr--r-- 1 root root  4082 2016-01-17 20:45 ok.png*
+-rwxr--r-- 1 root root 21418 2016-01-17 20:45 running.png*
+-rwxr--r-- 1 root root  6605 2016-01-17 20:45 time.png*
+-rwxr--r-- 1 root root  5300 2016-01-17 20:45 warning.png*
+
