@@ -120,8 +120,8 @@ sudo vi start_py.sh
     sudo chmod a+r /home/ubuntu/ramdisk/soft/global_data.py
     sudo chmod a+r /home/ubuntu/ramdisk/soft/sql_setup.py
     sudo chmod a+rw /home/ubuntu/ramdisk/soft/www
-    sudo chmod a+rw /sys/class/leds/beaglebone::usr3/brightness # LED on / off
-    sudo python3 -OO /home/ubuntu/ramdisk/soft/boot.py &
+    #sudo chmod a+rw /sys/class/leds/beaglebone::usr3/brightness # LED on / off
+    sudo python -OO /home/ubuntu/ramdisk/soft/boot.py &
 
 [mettre en read others les fichiers en wwww]
 ########################################################################################################

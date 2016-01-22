@@ -1,0 +1,10 @@
+sudo apt-get install xinput-calibrator
+sudo xinput_calibrator
+
+sudo vi /etc/X11/xorg.conf ==> Section "InputClass"
+                                  Identifier      "calibration"
+                                  MatchProduct    "ti-tsc"
+                                  Option  "Calibration"   "156 3947 393 3936"
+                                  Option  "SwapAxes"      "0"
+                               EndSection
+
